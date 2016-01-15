@@ -18,9 +18,15 @@ module.exports = {
 	},
 
 	duplicar: function(req, res, next) {
-		Cuestionario.duplicar
+		//CON METODO DE CLASE
+		/*Cuestionario.duplicar
 			(req.cuestionario, function (err, cuestionarioDuplicado) 
+				{ res.json(cuestionarioDuplicado) });*/
+		//CON METODO DE INSTANCIA
+		req.cuestionario.duplicar
+			(function (err, cuestionarioDuplicado) 
 				{ res.json(cuestionarioDuplicado) });
+
 
 	}
 };
