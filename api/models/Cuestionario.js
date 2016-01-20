@@ -17,7 +17,11 @@ module.exports = {
 	    	collection: 'pregunta',
 	    	via: 'cuestionarios'
 	    },
-	    duplicar: function(cb){// >>> metodo de instancia 
+	    alumnos: {
+	    	collection: 'alumno',
+	    	via: 'cuestionarios'
+	    },
+	    duplicar: function(cb){// >>> metodo de instancia la funcion DUPLICAR seria un parametro
 			cuestionarioJSON = this.toJSON();//this = cuestionario
 			delete cuestionarioJSON["id"];
 			Cuestionario.create(cuestionarioJSON)
@@ -30,6 +34,13 @@ module.exports = {
 				*/
 				cb(null, created);
 			})	    	
+	    },
+	    asociarGrupo: function(grupo, cb){
+			while(grupo.alumnos.length){
+				var alumno = grupo.alumnos.pop();
+				this.alumnos.add(alumno);
+				this.save;
+			}	
 	    }
 	},
 	duplicar: function (cuestionario, cb) {
@@ -60,8 +71,6 @@ module.exports = {
 				cb(null, created);
 			})
 			});
-
-		
 	}
 	
 };

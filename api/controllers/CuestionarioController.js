@@ -19,15 +19,26 @@ module.exports = {
 
 	duplicar: function(req, res, next) {
 		//CON METODO DE CLASE
-		/*Cuestionario.duplicar
+		/*
+		Cuestionario.duplicar
 			(req.cuestionario, function (err, cuestionarioDuplicado) 
-				{ res.json(cuestionarioDuplicado) });*/
+				{ res.json(cuestionarioDuplicado) });
+		*/
+
+
 		//CON METODO DE INSTANCIA
 		req.cuestionario.duplicar
 			(function (err, cuestionarioDuplicado) 
 				{ res.json(cuestionarioDuplicado) });
 
 
+	},
+
+	asociarGrupo: function (req, res, next){
+		req.cuestionario.asociarGrupo(	
+			req.grupo,function ( err, aaaCuestionario)
+				{res.json(aaaCuestionario)}
+				);
 	}
 };
 
