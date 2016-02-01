@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+
 	load: function(req, res, next) {
 		Cuestionario.findOne({
 			where: { id: Number(req.params.cuestionarioId)}
